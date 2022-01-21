@@ -1,0 +1,11 @@
+version: 0.1
+phases:
+  pre_build:
+    commands:
+      - 'echo Start...'
+  build:
+    commands:
+      - 'npm i'
+      - 'npm run cypress:run'
+      - 'npm run-script build'
+
