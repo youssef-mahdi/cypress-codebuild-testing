@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { productsList } from "./data";
+import "./App.css";
+import Item from "./item";
 
 function App() {
+  const [count, setCount] = React.useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="conatiner">
+      Items in cart: {count}
+      {productsList.map((product: any, key: number) => {
+        return (
+          <Item
+            {...product}
+            addToCart={() => {
+              setCount(count + 1);
+            }}
+          />
+        );
+      })}
     </div>
   );
 }
